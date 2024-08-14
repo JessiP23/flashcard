@@ -117,9 +117,39 @@ export default function Generate() {
                                 </Grid>
                             ))}
                         </Grid>
+                        {flashcards.length > 0 && (
+                            <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center' }}>
+                                <Button variant="contained" color="primary" onClick={handleOpenDialog}>
+                                    Save Flashcards
+                                </Button>
+                            </Box>
+                        )}
                     </Box>
                 )}
             </Box>
+            <Dialog open={dialogOpen} onClose={handleCloseDialog}>
+                <DialogTitle>Save Flashcard Set</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                    Please enter a name for your flashcard set.
+                    </DialogContentText>
+                    <TextField
+                    autoFocus
+                    margin="dense"
+                    label="Set Name"
+                    type="text"
+                    fullWidth
+                    value={setName}
+                    onChange={(e) => setSetName(e.target.value)}
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCloseDialog}>Cancel</Button>
+                    <Button onClick={saveFlashcards} color="primary">
+                    Save
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </Container>
     )
 }
