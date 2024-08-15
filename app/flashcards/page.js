@@ -1,6 +1,7 @@
 import { useRouter } from "next/navigation"
 import { useUser } from "@clerk/nextjs"
 import { useState } from "react"
+import { doc, getDoc, setDoc } from "firebase/firestore"
 
 export default function Flashcard() {
     const { isLoaded, isSignedIn, user } = useUser()

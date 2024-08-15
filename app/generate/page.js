@@ -1,9 +1,14 @@
 'use client'
 
 import { useState } from "react"
-import { Container, TextField, Button, Typography, Box, Grid, CardContent, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from "@mui/material"
+import { Container, TextField, Button, Typography, Box, Grid, CardContent, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Card } from "@mui/material"
+import { writeBatch, doc, collection, userDocSnap, getDoc } from "firebase/firestore"
+import { getDialogContentTextUtilityClass } from "@mui/material"
+import { db } from "@/firebase"
+import { useUser } from "@clerk/nextjs"
 
 export default function Generate() {
+    const {user} = useUser();
     const [text, setText] = useState('')
     const [flashcards, setFlashcards] = useState([])
     const [setName, setSetName] = useState('')
@@ -13,6 +18,11 @@ export default function Generate() {
     const handleCloseDialog = () => setDialogOpen(false)
 
     const saveFlashcards = async () => {
+        if (!user) {
+            alert('User not found. Please log in.')
+            return;
+        }
+
         if (!setName.trim()) {
             alert('Please enter a name for your flashcard set.')
             return
@@ -20,7 +30,7 @@ export default function Generate() {
 
         try {
             const userDocRef = doc(collection(db, 'users'), user.id)
-            const userDocSnap = await getDialogContentTextUtilityClass(userDocRef)
+            const userDocSnap = await getDoc(userDocRef)
 
             const batch = writeBatch(db)
 
@@ -88,7 +98,27 @@ export default function Generate() {
                     multiline
                     rows={4}
                     variant="outlined"
-                    sx={{ mb: 2 }}
+                    sx={{
+                        mb: 2,
+        "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+                borderColor: "white"
+            },
+            "&:hover fieldset": {
+                borderColor: "white"
+            },
+            "&.Mui-focused fieldset": {
+                borderColor: "white"
+            }
+        },
+        "& .MuiInputLabel-root": {
+            color: "white"
+        },
+        "& .MuiOutlinedInput-input": {
+            color: "white"
+        }
+                    }}
+                    color="secondary"
                 />
                 <Button
                     variant="contained"

@@ -18,19 +18,24 @@ export async function POST(req) {
     const data = await req.text()
 
     const completion = await openai.chat.completions.create({
+        model: 'gpt-4',
         messages: [
             { role: 'system', content: systemPrompt },
             { role: 'user', content: data },
         ],
-        model: 'gpt-4o',
-        response_format: {
-            type: 'json_object',
-        }
-    })
+    });
 
-    // Parse the JSON response from the OpenAI API
-    const flashcards = JSON.parse(completion.choices[0].message.content)
+    const content = completion.choices[0].message.content.trim();
+        let flashcards;
+
+        // Try to parse the response, log any errors
+        try {
+            flashcards = JSON.parse(content).flashcard;
+        } catch (error) {
+            console.error('Error parsing JSON from OpenAI response:', error);
+            return NextResponse.json({ error: 'Invalid response format from OpenAI' }, { status: 500 });
+        }
 
     // Return the flashcards as a JSON response
-    return NextResponse.json(flashcards.flashcards)
+    return NextResponse.json(flashcards)
 }
