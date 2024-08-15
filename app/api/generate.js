@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
+import { openai, openai } from "@ai-sdk/openai";
+import { generateText } from "ai";
 
 const systemPrompt = `You are a flashcard creator, you take in text and create multiple flashcards from it. Make sure to create exactly 10 flashcards.
 Both front and back should be one sentence long. You should return in the following JSON format: 
@@ -14,7 +16,7 @@ Both front and back should be one sentence long. You should return in the follow
 
 export async function POST(req) {
     try {
-      const openai = new OpenAI({
+      const openai = new openai({
         apiKey: process.env.OPENAI_API_KEY,
       });
       
