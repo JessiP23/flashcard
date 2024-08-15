@@ -13,6 +13,7 @@ Both front and back should be one sentence long. You should return in the follow
 
 export async function POST(req) {
     try {
+        // openai key
       const openai = new OpenAI({
         apiKey: process.env.OPENAI_API_KEY,
       });
