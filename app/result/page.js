@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation"
 import { useSearchParams } from "next/navigation"
 import { useState } from "react"
+import { CircularProgress, Container, Typography, Box } from "@mui/material"
 
 const ResultPage = () => {
     const router = useRouter()
