@@ -21,6 +21,9 @@ export async function POST(req) {
       });
       
       const data = await req.text();
+
+      console.log('Sending request to OpenAI');
+      
       
       const completion = await openai.chat.completions.create({
         model: 'gpt-4',
@@ -29,6 +32,9 @@ export async function POST(req) {
           { role: 'user', content: data },
         ],
       });
+
+      console.log('Received response from OpenAI');
+      
       
       const content = completion.choices[0].message.content.trim();
       
