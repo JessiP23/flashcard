@@ -12,30 +12,37 @@ Both front and back should be one sentence long. You should return in the follow
     ]    
 }`
 
-
 export async function POST(req) {
-    const openai = new OpenAI()
-    const data = await req.text()
-
-    const completion = await openai.chat.completions.create({
+    try {
+      const openai = new OpenAI({
+        apiKey: process.env.OPENAI_API_KEY,
+      });
+      
+      const data = await req.text();
+      
+      const completion = await openai.chat.completions.create({
         model: 'gpt-4',
         messages: [
-            { role: 'system', content: systemPrompt },
-            { role: 'user', content: data },
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: data },
         ],
-    });
-
-    const content = completion.choices[0].message.content.trim();
-        let flashcards;
-
-        // Try to parse the response, log any errors
-        try {
-            flashcards = JSON.parse(content).flashcard;
-        } catch (error) {
-            console.error('Error parsing JSON from OpenAI response:', error);
-            return NextResponse.json({ error: 'Invalid response format from OpenAI' }, { status: 500 });
-        }
-
-    // Return the flashcards as a JSON response
-    return NextResponse.json(flashcards)
-}
+      });
+      
+      const content = completion.choices[0].message.content.trim();
+      
+      let flashcards;
+      
+      try {
+        flashcards = JSON.parse(content).flashcard;
+      } catch (error) {
+        console.error('Error parsing JSON from OpenAI response:', error);
+        return NextResponse.json({ error: 'Invalid response format from OpenAI' }, { status: 500 });
+      }
+      
+      return NextResponse.json(flashcards);
+    } catch (error) {
+      console.error('Error in /api/generate:', error);
+      return NextResponse.json({ error: 'An error occurred while generating flashcards.' }, { status: 500 });
+    }
+  }
+  
