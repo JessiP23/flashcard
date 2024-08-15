@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { Container, TextField, Button, Typography, Box, Grid, CardContent, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Card } from "@mui/material"
 import { writeBatch, doc, collection, userDocSnap, getDoc } from "firebase/firestore"
-import { getDialogContentTextUtilityClass } from "@mui/material"
 import { db } from "@/firebase"
 import { useUser } from "@clerk/nextjs"
 
@@ -13,6 +12,7 @@ export default function Generate() {
     const [flashcards, setFlashcards] = useState([])
     const [setName, setSetName] = useState('')
     const [dialogOpen, setDialogOpen] = useState(false)
+    const [showBack, setShowBack] = useState({});
 
     const handleOpenDialog = () => setDialogOpen(true)
     const handleCloseDialog = () => setDialogOpen(false)
@@ -57,6 +57,10 @@ export default function Generate() {
             console.error('Error saving flashcards:', error)
             alert('An error occurred while saving flashcards. Please try again.')
         }
+    }
+
+    const handleCardClick = (index) => {
+        setShowBack((prevShowBack) => ({ ...prevShowBack, [index]: !prevShowBack[index] }));
     }
 
     const handleSubmit = async() => {
@@ -136,13 +140,20 @@ export default function Generate() {
                         <Grid container spacing={2}>
                             {flashcards.map((flashcard, index) => (
                                 <Grid item xs={12} sm={6} md={4} key={index}>
-                                    <Card>
-                                        <CardContent>
-                                            <Typography variant="h6">Front:</Typography>
-                                            <Typography>{flashcard.front}</Typography>
-                                            <Typography variant="h6" sx={{ mt: 2 }}>Back:</Typography>
-                                            <Typography>{flashcard.back}</Typography>
-                                        </CardContent>
+                                    <Card onClick={() => handleCardClick(index)}>
+                                    <CardContent>
+              {showBack[index] ? (
+                <>
+                  <Typography variant="h6">Back:</Typography>
+                  <Typography>{flashcard.back}</Typography>
+                </>
+              ) : (
+                <>
+                  <Typography variant="h6">Front:</Typography>
+                  <Typography>{flashcard.front}</Typography>
+                </>
+              )}
+            </CardContent>
                                     </Card>
                                 </Grid>
                             ))}
