@@ -69,7 +69,6 @@ export default function Generate() {
             alert('Please enter some text to generate flashcards.')
             return
         }
-
         try {
             const response = await fetch('/api/generate', {
                 method: 'POST',
@@ -77,14 +76,11 @@ export default function Generate() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ text }),
-            })
-
+            });
             if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(`Failed to generate flashcards: ${response.status} - ${errorText}`);
+                throw new Error('Failed to generate flashcards');
             }
-
-            const data = await response.json()
+            const data = await response.json();
             setFlashcards(data)
         } catch (error) {
             console.error('Error generating flashcards', error)
