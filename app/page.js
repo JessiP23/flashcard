@@ -9,6 +9,7 @@ const SignedIn = dynamic(() => import('@clerk/nextjs').then(mod => mod.SignedIn)
 const SignedOut = dynamic(() => import('@clerk/nextjs').then(mod => mod.SignedOut), { ssr: false });
 const UserButton = dynamic(() => import('@clerk/nextjs').then(mod => mod.UserButton), { ssr: false });
 import Sidebar from './components/sidebar';
+import { useUser } from '@clerk/nextjs';
 
 const handleSubmit = async () => {
   const checkoutSession = await fetch('/api/checkout_sessions', {
@@ -59,4 +60,5 @@ export default function Home() {
       </Box>
     </Box>
   );
+
 }

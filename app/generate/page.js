@@ -6,9 +6,10 @@ import { writeBatch, doc, collection, userDocSnap, getDoc } from "firebase/fires
 import { db } from "../../firebase"
 import { useUser } from "@clerk/nextjs"
 import Sidebar from "../components/sidebar"
+import Link from "next/link"
 
 export default function Generate() {
-    const {user} = useUser();
+    const {user, isSignedIn, isLoaded } = useUser();
     const [text, setText] = useState('')
     const [flashcards, setFlashcards] = useState([])
     const [setName, setSetName] = useState('')
@@ -60,6 +61,10 @@ export default function Generate() {
         }
     }
 
+    if (!isLoaded) {
+        return null;
+    }
+
     const handleCardClick = (index) => {
         setShowBack((prevShowBack) => ({ ...prevShowBack, [index]: !prevShowBack[index] }));
     }
@@ -89,10 +94,11 @@ export default function Generate() {
         }
     }
 
+    if (isSignedIn) {
     return (
         <Box sx={{ display: 'flex', minHeight: '100vh' }}>
-      {/* Sidebar */}
-      <Sidebar />
+        {/* Sidebar */}
+        <Sidebar />
         <Container maxWidth='md'>
             <Box sx={{my:4}}>
                 <Typography variant="h4" component="h1" gutterBottom>
@@ -197,5 +203,19 @@ export default function Generate() {
             </Dialog>
         </Container>
         </Box>
+    )}
+
+    return (
+        <main className="flex items-center justify-center min-h-screen bg-slate-800">
+      <div className="text-center p-6 bg-white shadow-md rounded-lg">
+        <h1 className="text-2xl font-bold mb-4 text-cyan-800">You are not logged in</h1>
+        <p className="text-lg mb-6 text-cyan-700">Please log in to access this page.</p>
+        <Link href="/">
+          <Button className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition duration-300">
+            Go to Home
+          </Button>
+        </Link>
+      </div>
+    </main>
     )
 }
