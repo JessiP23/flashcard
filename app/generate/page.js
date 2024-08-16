@@ -5,6 +5,7 @@ import { Container, TextField, Button, Typography, Box, Grid, CardContent, Dialo
 import { writeBatch, doc, collection, userDocSnap, getDoc } from "firebase/firestore"
 import { db } from "../../firebase"
 import { useUser } from "@clerk/nextjs"
+import Sidebar from "../components/sidebar"
 
 export default function Generate() {
     const {user} = useUser();
@@ -89,6 +90,9 @@ export default function Generate() {
     }
 
     return (
+        <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+      {/* Sidebar */}
+      <Sidebar />
         <Container maxWidth='md'>
             <Box sx={{my:4}}>
                 <Typography variant="h4" component="h1" gutterBottom>
@@ -192,5 +196,6 @@ export default function Generate() {
                 </DialogActions>
             </Dialog>
         </Container>
+        </Box>
     )
 }
