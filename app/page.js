@@ -52,7 +52,7 @@ export default function Home() {
           </Button>
         </Box>
         <Box sx={{ my: 6, textAlign: 'center' }}>
-          <Typography variant="h4" component="h2" gutterBottom>Pricing</Typography>
+          <Typography variant="h4" component="h2" gutterBottom></Typography>
           <Grid container spacing={4} justifyContent="center">
             {/* Pricing plans */}
           </Grid>
