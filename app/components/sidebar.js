@@ -11,13 +11,13 @@ const Sidebar = () => {
     const {signOut} = useClerk()
     const {user, isSignedIn, isLoaded } = useUser();
 
-    if (!isLoaded) {
-        return null;
-    }
-
     useEffect(() => {
         setIsClient(true);
     }, []);
+
+    if (!isLoaded) {
+        return null;
+    }
 
     if (isSignedIn){
 
