@@ -136,42 +136,52 @@ export default function Home() {
         </Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={4}>
-            <Box textAlign="center">
-              <Image src={music} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
-              <Typography variant="h6">Music</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Box textAlign="center">
-              <Image src={artificial} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }}/>
-              <Typography variant="h6">Artificial Intelligence</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Link href='/music-flashcard'>
+            <Link href='/algorithm'>
               <Box textAlign="center" style={{ cursor: 'pointer' }}>
                 <Image src={algorithm} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
-                <Typography variant="h6">Algorithms</Typography>
+                <Typography variant="h6">Algorithm</Typography>
               </Box>
             </Link>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Box textAlign="center">
-              <Image src={algebra} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
-              <Typography variant="h6">Algebra</Typography>
-            </Box>
+            <Link href='/artificial'>
+              <Box textAlign="center" style={{ cursor: 'pointer' }}>
+                <Image src={artificial} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }}/>
+                <Typography variant="h6">Artificial Intelligence</Typography>
+              </Box>
+            </Link>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Box textAlign="center">
-              <Image src={biology} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
-              <Typography variant="h6">Biology</Typography>
-            </Box>
+            <Link href='/music-flashcard'>
+              <Box textAlign="center" style={{ cursor: 'pointer' }}>
+                <Image src={music} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
+                <Typography variant="h6">Music</Typography>
+              </Box>
+            </Link>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Box textAlign="center">
-              <Image src={war} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
-              <Typography variant="h6">World War II</Typography>
-            </Box>
+            <Link href='/algebra'>
+              <Box textAlign="center" style={{ cursor:'pointer' }}>
+                <Image src={algebra} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
+                <Typography variant="h6">Algebra</Typography>
+              </Box>
+            </Link>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Link href='/biology'>
+              <Box textAlign="center" style={{ cursor: 'pointer' }}>
+                <Image src={biology} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
+                <Typography variant="h6">Biology</Typography>
+              </Box>
+            </Link>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Link href='/worldwar'>
+              <Box textAlign="center" style={{cursor:'pointer'}}>
+                <Image src={war} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
+                <Typography variant="h6">World War II</Typography>
+              </Box>
+            </Link>
           </Grid>
         </Grid>
       </Container>
