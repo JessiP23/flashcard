@@ -130,9 +130,9 @@ export default function Home() {
         </Grid>
       </Container>
 
-      <Container>
-      <Typography variant="h4" component="h2" sx={{ textAlign: 'center', py: 15 }} gutterBottom>
-          Explore existing Flashcard sets
+      <Container sx={{ paddingBottom: 7 }}>
+        <Typography variant="h4" component="h2" sx={{ textAlign: 'center', py: 15 }} gutterBottom>
+            Explore existing Flashcard sets
         </Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={4}>
