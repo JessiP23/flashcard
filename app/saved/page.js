@@ -6,6 +6,7 @@ import { Container, Typography, Grid, Card, CardContent, Button, AppBar, Toolbar
 import { getFirestore, collection, getDoc, doc, getDocs } from "firebase/firestore";
 import { useUser } from "@clerk/nextjs";
 import { db } from "../../firebase";
+import Link from 'next/link';
 
 const SignedIn = dynamic(() => import('@clerk/nextjs').then(mod => mod.SignedIn), { ssr: false });
 const SignedOut = dynamic(() => import('@clerk/nextjs').then(mod => mod.SignedOut), { ssr: false });
@@ -53,9 +54,11 @@ export default function Saved() {
                 <div className="text-center p-6 bg-white shadow-md rounded-lg">
                     <h1 className="text-2xl font-bold mb-4 text-cyan-800">You are not logged in</h1>
                     <p className="text-lg mb-6 text-cyan-700">Please log in to access this page.</p>
-                    <Button className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition duration-300">
-                        Go to Home
-                    </Button>
+                    <Link href="/">
+                        <Button className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition duration-300">
+                            Go to Home
+                        </Button>
+                    </Link>
                 </div>
             </main>
         );
