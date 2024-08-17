@@ -4,29 +4,25 @@ import { SignIn } from '@clerk/nextjs'
 import Link from 'next/link'
 
 export default function SignUpPage() {
-  // ... (component body)
 
   return (
-    <AppBar position="static" sx={{backgroundColor: '#3f51b5'}}>
-        <Toolbar>
-            <Typography variant="h6" sx={{flexGrow: 1}}>
-            Flashcard SaaS
-            </Typography>
-            <Button color="inherit">
-            <Box
-                display="flex"
-                flexDirection="column"
-                justifyContent="center"
-                alignItems="center"
-                sx={{textAlign: 'center', my: 4}}
-                >
-                <Typography variant="h4" component="h1" gutterBottom>
-                    Sign In
-                </Typography>
-                <SignIn />
-            </Box>
-            </Button>
-        </Toolbar>
-    </AppBar>
+    <AppBar position="static">
+    <Toolbar
+        sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh', // Makes the Toolbar take full viewport height for vertical centering
+            padding: 0, // Remove any padding
+        }}
+    >
+        <Typography variant="h4" component="h1" gutterBottom>
+            Sign In
+        </Typography>
+        <SignIn />
+    </Toolbar>
+</AppBar>
+
   )
 }
