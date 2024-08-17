@@ -11,16 +11,16 @@ const Artificial = () => {
   const [showBack, setShowBack] = useState({});
 
   const flashcards = [
-    { question: ' What is the term for the pattern of strong and weak beats in music?', answer: 'Rhythm' },
-    { question: 'What is the primary function of a metronome in music?', answer: ' A metronome is a tool that helps musicians keep a steady tempo by producing a click or sound at a specific rate, allowing them to play in time with the desired rhythm.' },
-    { question: 'What is the difference between a major and minor key in music?', answer: 'A major key typically has a bright, happy sound, while a minor key has a more somber, melancholic sound. This is due to the specific pattern of whole and half steps used in each key.' },
-    { question: 'Who is credited with developing the modern system of musical notation?', answer: "Guido d'Arezzo"},
-    { question: 'What is the purpose of a cadence in music?', answer: 'A cadence is a series of chords that conclude a piece of music, providing a sense of finality and resolution. Cadences can be used to signal the end of a section or the entire piece.' },
-    { question: 'What is the role of timbre in music?', answer: 'Timbre refers to the unique "tone color" or sound quality of a particular instrument or voice. Timbre is what allows us to distinguish between different instruments or voices, even when playing the same pitch.' },
-    { question: 'Which musical term means "very fast" or "very quick"?', answer: 'Presto' },
-    { question: 'What is the term for the process of transcribing a piece of music from one instrument or voice to another?', answer: 'Arrangement refers to the process of adapting a piece of music for a different instrument or voice, often involving changes to the melody, harmony, or rhythm.' },
-    { question: 'What is the difference between a sonata and a suite?', answer: 'A sonata is a multi-movement work that typically features a fast-slow-fast structure, while a suite is a collection of dances or movements that are often performed in a specific order.' },
-    { question: 'What is the role of articulation in music?', answer: 'Articulation refers to the way notes are attacked and released, with different articulations (such as legato or staccato) affecting the overall sound and feel of a piece.' },
+    { question: 'What is the primary function of AI in flashcard generation?', answer: ' To create flashcards automatically from input sources such as PDF files, notes, and images.' },
+    { question: 'What is the name of the AI-powered quiz generator that can transform any content into a quiz?', answer: 'To create machines that can think and learn like humans.' },
+    { question: 'What is the name of the AI system that can recognize and respond to voice commands', answer: 'Virtual assistant' },
+    { question: 'What is the primary application of deep learning in artificial intelligence?', answer: " Image and speech recognition."},
+    { question: 'What is the primary benefit of using artificial intelligence in business?', answer: 'Increased efficiency and productivity.' },
+    { question: 'What is the term for the use of artificial intelligence to automate decision-making processes?', answer: 'Decision support system' },
+    { question: 'What is the name of the first computer program that could simulate a conversation with a human?', answer: 'ELIZA' },
+    { question: 'What is the name of the first computer program that could simulate a conversation with a human?', answer: 'To create intelligent machines that can perform any intellectual task that a human can, with the ability to reason, learn, and apply knowledge across a wide range of tasks and domains.' },
+    { question: 'What is the role of reinforcement learning in artificial intelligence? ', answer: 'Reinforcement learning is a type of machine learning that involves training AI agents to make decisions based on rewards or penalties, with the goal of maximizing rewards and achieving optimal performance in complex, dynamic environments.' },
+    { question: 'What is the term for the use of artificial intelligence to create artificial environments and simulations?', answer: 'Virtual Reality' },
   ];
 
   const handleCardClick = (index) => {
@@ -76,6 +76,8 @@ const Artificial = () => {
                         overflowY: 'auto',
                         flexGrow: 1,
                         display: 'flex',
+                        width: '100%',
+                        py: '40px',
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',

@@ -77,6 +77,8 @@ const FlashcardPage = () => {
                         overflowY: 'auto',
                         flexGrow: 1,
                         display: 'flex',
+                        width: '100%',
+                        py: '40px',
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
