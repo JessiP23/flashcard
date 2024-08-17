@@ -1,64 +1,131 @@
 'use client'
 
-import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { AppBar, Toolbar, Typography, Button, Box, Grid, List, ListItem } from "@mui/material";
+import { AppBar, Toolbar, Typography, Button, Box, Grid, CssBaseline, Container } from "@mui/material";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import './page.css'
+import Image from 'next/image';
+import saas from './public/images/saas.jpg'
+import saas1 from './public/images/saas1.jpg'
+import saas2 from './public/images/saas2.jpg'
+import image from './public/images/image.jpg'
+import image1 from './public/images/image1.jpg'
+import image2 from './public/images/image2.jpg'
+
 
 // Dynamically import Clerk components
 const SignedIn = dynamic(() => import('@clerk/nextjs').then(mod => mod.SignedIn), { ssr: false });
 const SignedOut = dynamic(() => import('@clerk/nextjs').then(mod => mod.SignedOut), { ssr: false });
 const UserButton = dynamic(() => import('@clerk/nextjs').then(mod => mod.UserButton), { ssr: false });
-import Sidebar from './components/sidebar';
-import { useUser } from '@clerk/nextjs';
 
-const handleSubmit = async () => {
-  const checkoutSession = await fetch('/api/checkout_sessions', {
-    method: 'POST',
-    headers: { origin: 'http://localhost:3000' },
-  });
-  const checkoutSessionJson = await checkoutSession.json();
-
-  const stripe = await getStripe(); // Ensure getStripe is correctly imported and defined
-  const { error } = await stripe.redirectToCheckout({
-    sessionId: checkoutSessionJson.id,
-  });
-
-  if (error) {
-    console.warn(error.message);
-  }
-}
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#1976d2',
+    },
+    secondary: {
+      main: '#ffffff',
+    },
+  },
+  typography: {
+    fontFamily: 'Roboto, sans-serif',
+  },
+});
 
 export default function Home() {
-
   return (
-    <Box sx={{ display: 'flex', minHeight: '100vh' }}>
-      {/* Sidebar */}
-      <Sidebar />
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <AppBar position="sticky" color="transparent" elevation={0}>
+        <Toolbar>
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+            Flashcards
+          </Typography>
+          <Button color="inherit" href="/">Home</Button>
+          <Button color="inherit" href="/generate">Generate</Button>
+          <Button color="inherit" href="/saved">Saved</Button>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          <SignedOut>
+            <Button color="inherit" href="/sign-in">Login</Button>
+          </SignedOut>
+        </Toolbar>
+      </AppBar>
 
-      {/* Main Content */}
-      <Box sx={{ flexGrow: 1, p: 3 }}>
-        <Box sx={{ textAlign: 'center', my: 4 }}>
-          <Typography variant="h2" component="h1" gutterBottom>
-            Welcome to Flashcard SaaS
-          </Typography>
-          <Typography variant="h5" component="h2" gutterBottom>
-            The easiest way to create flashcards from your text.
-          </Typography>
-          <Button variant="contained" color="primary" sx={{ mt: 2, mr: 2 }} href="/generate">
-            Get Started
-          </Button>
-          <Button variant="outlined" color="primary" sx={{ mt: 2 }}>
-            Learn More
-          </Button>
-        </Box>
-        <Box sx={{ my: 6, textAlign: 'center' }}>
-          <Typography variant="h4" component="h2" gutterBottom></Typography>
-          <Grid container spacing={4} justifyContent="center">
-            {/* Pricing plans */}
-          </Grid>
-        </Box>
+      <Box className="hero-section">
+        <Container maxWidth="lg">
+          <Box textAlign="center" sx={{ py: 8 }}>
+            <Typography variant="h2" component="h1" color="secondary" gutterBottom>
+              Welcome to Flashcard SaaS
+            </Typography>
+            <Typography variant="h5" component="h2" color="secondary" gutterBottom>
+              The easiest way to create flashcards from your text.
+            </Typography>
+            <Box mt={4}>
+              <Button variant="contained" color="primary" sx={{ mt: 2, mr: 2 }} href="/generate">
+                Get Started
+              </Button>
+              <Button variant="outlined" color="secondary" sx={{ mt: 2 }} href="/learn-more">
+                Learn More
+              </Button>
+            </Box>
+          </Box>
+        </Container>
       </Box>
-    </Box>
-  );
 
+      <Container>
+      <Grid container spacing={4}>
+          <Grid item xs={12} sm={6} md={4}>
+            <Box textAlign="center">
+              <Image src={image} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Box textAlign="center">
+              <Image src={image1} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }}/>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Box textAlign="center">
+              <Image src={image2} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
+            </Box>
+          </Grid>
+        </Grid>
+      </Container>
+
+      <Container maxWidth="md" sx={{ py: 25 }}>
+        <Typography variant="h4" component="h2" sx={{ textAlign: 'center', py: 15 }} gutterBottom>
+          Features
+        </Typography>
+        <Grid container spacing={4}>
+          <Grid item xs={12} sm={6} md={4}>
+            <Box textAlign="center">
+              <Image src={saas} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
+              <Typography variant="h6">Easy to Use</Typography>
+              <Typography>Simple interface to create flashcards quickly.</Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Box textAlign="center">
+              <Image src={saas1} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }}/>
+              <Typography variant="h6">AI-Powered</Typography>
+              <Typography>Leverage AI to generate flashcards effortlessly.</Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Box textAlign="center">
+              <Image src={saas2} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
+              <Typography variant="h6">Cross-Platform</Typography>
+              <Typography>Access your flashcards anywhere, anytime.</Typography>
+            </Box>
+          </Grid>
+        </Grid>
+      </Container>
+
+      <Box sx={{ p: 2, backgroundColor: 'rgba(0, 0, 0, 0.7)', color: 'white', textAlign: 'center' }}>
+        <Typography variant="h6" component="p">© 2024 Flashcard SaaS. All rights reserved.</Typography>
+      </Box>
+    </ThemeProvider>
+  );
 }
