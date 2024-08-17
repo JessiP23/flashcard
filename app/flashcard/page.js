@@ -1,7 +1,7 @@
 'use client'
 
 import { useUser } from "@clerk/nextjs"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { setDoc, collection, doc } from "firebase/firestore"
 import { Card, CardActionArea, CardContent, Container, Grid, Typography, Box } from "@mui/material"

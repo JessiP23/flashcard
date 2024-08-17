@@ -17,6 +17,7 @@ import algorithm from './public/images/algorithm.jpg'
 import algebra from './public/images/algebra.jpg'
 import biology from './public/images/biology.jpg'
 import war from './public/images/war.jpg'
+import Link from 'next/link';
 
 
 // Dynamically import Clerk components
@@ -147,10 +148,12 @@ export default function Home() {
             </Box>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Box textAlign="center">
-              <Image src={algorithm} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
-              <Typography variant="h6">Algorithms</Typography>
-            </Box>
+            <Link href='/music-flashcard'>
+              <Box textAlign="center" style={{ cursor: 'pointer' }}>
+                <Image src={algorithm} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
+                <Typography variant="h6">Algorithms</Typography>
+              </Box>
+            </Link>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <Box textAlign="center">
