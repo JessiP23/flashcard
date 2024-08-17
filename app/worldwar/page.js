@@ -7,20 +7,21 @@ const SignedIn = dynamic(() => import('@clerk/nextjs').then(mod => mod.SignedIn)
 const SignedOut = dynamic(() => import('@clerk/nextjs').then(mod => mod.SignedOut), { ssr: false });
 const UserButton = dynamic(() => import('@clerk/nextjs').then(mod => mod.UserButton), { ssr: false });
 
-const WorldWar = () => {
+const FlashcardPage = () => {
   const [showBack, setShowBack] = useState({});
 
   const flashcards = [
-    { question: ' What is the term for the pattern of strong and weak beats in music?', answer: 'Rhythm' },
-    { question: 'What is the primary function of a metronome in music?', answer: ' A metronome is a tool that helps musicians keep a steady tempo by producing a click or sound at a specific rate, allowing them to play in time with the desired rhythm.' },
-    { question: 'What is the difference between a major and minor key in music?', answer: 'A major key typically has a bright, happy sound, while a minor key has a more somber, melancholic sound. This is due to the specific pattern of whole and half steps used in each key.' },
-    { question: 'Who is credited with developing the modern system of musical notation?', answer: "Guido d'Arezzo"},
-    { question: 'What is the purpose of a cadence in music?', answer: 'A cadence is a series of chords that conclude a piece of music, providing a sense of finality and resolution. Cadences can be used to signal the end of a section or the entire piece.' },
-    { question: 'What is the role of timbre in music?', answer: 'Timbre refers to the unique "tone color" or sound quality of a particular instrument or voice. Timbre is what allows us to distinguish between different instruments or voices, even when playing the same pitch.' },
-    { question: 'Which musical term means "very fast" or "very quick"?', answer: 'Presto' },
-    { question: 'What is the term for the process of transcribing a piece of music from one instrument or voice to another?', answer: 'Arrangement refers to the process of adapting a piece of music for a different instrument or voice, often involving changes to the melody, harmony, or rhythm.' },
-    { question: 'What is the difference between a sonata and a suite?', answer: 'A sonata is a multi-movement work that typically features a fast-slow-fast structure, while a suite is a collection of dances or movements that are often performed in a specific order.' },
-    { question: 'What is the role of articulation in music?', answer: 'Articulation refers to the way notes are attacked and released, with different articulations (such as legato or staccato) affecting the overall sound and feel of a piece.' },
+    { question: 'What event marked the beginning of World War II? ', answer: 'The invasion of Poland by Germany on September 1, 1939' },
+    { question: 'What was the code name for the Allied invasion of Normandy?', answer: 'Operation Overlord.' },
+    { question: 'What was the Holocaust?', answer: 'The Holocaust was the systematic, state-sponsored persecution and murder of six million Jews and millions of others by the Nazi regime and its collaborators.' },
+    { question: 'How did the United States enter World War II?', answer: "The United States entered World War II after Japan's attack on Pearl Harbor on December 7, 1941, which led to a declaration of war against Japan, and shortly after, Germany and Italy declared war on the U.S."},
+    { question: 'What were the main causes of World War II?', answer: `The main causes of World War II include the Treaty of Versailles, the rise of fascism and militarism in Europe and Asia, the failure of appeasement, and the aggression of Axis powers.` },
+    { question: 'How did the role of women change during World War II?', answer: "During World War II, the role of women expanded significantly as they took on jobs traditionally held by men, who were away fighting. Women worked in factories producing war materials, served in auxiliary military roles, and supported the war effort in various capacities. This shift challenged traditional gender roles and laid the groundwork for the post-war women's rights movement." },
+    { question: 'What was the significance of the Battle of Midway?', answer: `It was a turning point in the Pacific Theater, favoring the Allies.` },
+    { question: `What was the significance of the Battle of Stalingrad?`, answer: `The Battle of Stalingrad was a major turning point on the Eastern Front, where the Soviet Union successfully defended the city and began to push back the German forces.
+        ` },
+    { question: `What was the significance of the Potsdam Conference in 1945?`, answer:`The Potsdam Conference, held in July-August 1945, was significant as it was the last meeting of the Allied leaders during World War II. At Potsdam, the leaders discussed the administration of defeated Germany, the demilitarization and denazification of Germany, the borders of post-war Europe, and the terms of Japan's surrender. The conference also highlighted emerging tensions between the Soviet Union and Western Allies, setting the stage for the Cold War.` },
+    { question: 'What was the main purpose of the Yalta Conference?', answer: 'To discuss the post-war reorganization of Europe.' },
   ];
 
   const handleCardClick = (index) => {
@@ -79,20 +80,32 @@ const WorldWar = () => {
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
+                        padding: '20px',
+                        width: '100%',
+                        height: '100%', 
+                        boxSizing: 'border-box', 
                         backgroundColor: '#ddd',
-                        variant: 'body1'
+                        wordBreak: 'break-word', 
+                        '&::-webkit-scrollbar': {
+                            width: '6px',
+                        },
+                        '&::-webkit-scrollbar-thumb': {
+                            backgroundColor: '#888',
+                            borderRadius: '10px',
+                        },
                         }}
                     >
-                        {showBack[index] ? (
-                        <>
-                            <Typography py={6} variant="h6" sx={{ textAlign:'center' }}>{card.answer}</Typography>
-                        </>
-                        ) : (
-                        <>
-                            
-                            <Typography variant="h6" sx={{ textAlign:'center' }}>{card.question}</Typography>
-                        </>
-                        )}
+                        <Typography
+                        variant="h6"
+                        sx={{
+                            textAlign: 'center',
+                            overflowY: 'auto',
+                            maxHeight: '100%', 
+                            paddingRight: '10px', 
+                        }}
+                        >
+                        {showBack[index] ? card.answer : card.question}
+                        </Typography>
                     </CardContent>
                 </Card>
           ))}
@@ -102,4 +115,4 @@ const WorldWar = () => {
   );
 };
 
-export default WorldWar;
+export default FlashcardPage;
