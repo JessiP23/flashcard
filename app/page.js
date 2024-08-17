@@ -11,6 +11,12 @@ import saas2 from './public/images/saas2.jpg'
 import image from './public/images/image.jpg'
 import image1 from './public/images/image1.jpg'
 import image2 from './public/images/image2.jpg'
+import music from './public/images/music.jpg'
+import artificial from './public/images/artificial.jpg'
+import algorithm from './public/images/algorithm.jpg'
+import algebra from './public/images/algebra.jpg'
+import biology from './public/images/biology.jpg'
+import war from './public/images/war.jpg'
 
 
 // Dynamically import Clerk components
@@ -118,6 +124,50 @@ export default function Home() {
               <Image src={saas2} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
               <Typography variant="h6">Cross-Platform</Typography>
               <Typography>Access your flashcards anywhere, anytime.</Typography>
+            </Box>
+          </Grid>
+        </Grid>
+      </Container>
+
+      <Container>
+      <Typography variant="h4" component="h2" sx={{ textAlign: 'center', py: 15 }} gutterBottom>
+          Explore existing Flashcard sets
+        </Typography>
+        <Grid container spacing={4}>
+          <Grid item xs={12} sm={6} md={4}>
+            <Box textAlign="center">
+              <Image src={music} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
+              <Typography variant="h6">Music</Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Box textAlign="center">
+              <Image src={artificial} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }}/>
+              <Typography variant="h6">Artificial Intelligence</Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Box textAlign="center">
+              <Image src={algorithm} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
+              <Typography variant="h6">Algorithms</Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Box textAlign="center">
+              <Image src={algebra} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
+              <Typography variant="h6">Algebra</Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Box textAlign="center">
+              <Image src={biology} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
+              <Typography variant="h6">Biology</Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Box textAlign="center">
+              <Image src={war} alt="Feature 1" width={300} height={300} style={{ marginBottom: '16px' }} />
+              <Typography variant="h6">World War II</Typography>
             </Box>
           </Grid>
         </Grid>
