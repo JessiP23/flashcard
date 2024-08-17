@@ -7,20 +7,24 @@ const SignedIn = dynamic(() => import('@clerk/nextjs').then(mod => mod.SignedIn)
 const SignedOut = dynamic(() => import('@clerk/nextjs').then(mod => mod.SignedOut), { ssr: false });
 const UserButton = dynamic(() => import('@clerk/nextjs').then(mod => mod.UserButton), { ssr: false });
 
-const Algebra = () => {
+const FlashcardPage = () => {
   const [showBack, setShowBack] = useState({});
 
   const flashcards = [
-    { question: ' What is the term for the pattern of strong and weak beats in music?', answer: 'Rhythm' },
-    { question: 'What is the primary function of a metronome in music?', answer: ' A metronome is a tool that helps musicians keep a steady tempo by producing a click or sound at a specific rate, allowing them to play in time with the desired rhythm.' },
-    { question: 'What is the difference between a major and minor key in music?', answer: 'A major key typically has a bright, happy sound, while a minor key has a more somber, melancholic sound. This is due to the specific pattern of whole and half steps used in each key.' },
-    { question: 'Who is credited with developing the modern system of musical notation?', answer: "Guido d'Arezzo"},
-    { question: 'What is the purpose of a cadence in music?', answer: 'A cadence is a series of chords that conclude a piece of music, providing a sense of finality and resolution. Cadences can be used to signal the end of a section or the entire piece.' },
-    { question: 'What is the role of timbre in music?', answer: 'Timbre refers to the unique "tone color" or sound quality of a particular instrument or voice. Timbre is what allows us to distinguish between different instruments or voices, even when playing the same pitch.' },
-    { question: 'Which musical term means "very fast" or "very quick"?', answer: 'Presto' },
-    { question: 'What is the term for the process of transcribing a piece of music from one instrument or voice to another?', answer: 'Arrangement refers to the process of adapting a piece of music for a different instrument or voice, often involving changes to the melody, harmony, or rhythm.' },
-    { question: 'What is the difference between a sonata and a suite?', answer: 'A sonata is a multi-movement work that typically features a fast-slow-fast structure, while a suite is a collection of dances or movements that are often performed in a specific order.' },
-    { question: 'What is the role of articulation in music?', answer: 'Articulation refers to the way notes are attacked and released, with different articulations (such as legato or staccato) affecting the overall sound and feel of a piece.' },
+    { question: 'What is the definition of a variable in algebra?', answer: 'A symbol that represents a value that can change.' },
+    { question: 'What is the difference between an expression and an equation?', answer: 'An expression is a group of numbers, variables, and operations, while an equation is a statement that says two expressions are equal.' },
+    { question: 'What is a coefficient in an algebraic expression?', answer: 'A coefficient is a number that multiplies a variable or a product of variables.' },
+    { question: 'What is a monomial?', answer: "A monomial is an algebraic expression with only one term."},
+    { question: 'What is the difference between a linear and quadratic equation?', answer: 'A linear equation has a degree of 1, while a quadratic equation has a degree of 2' },
+    { question: 'Factor the expression x^2 + 5x + 6', answer: '(x + 3)(x + 2)' },
+    { question: 'Solve for y in the equation 4y - 2 = 16', answer: 'y=5' },
+    { question: `Factor the expression : x^2 + 5x + 6 `, answer: `Step 1: Look for two numbers whose product is 6 and whose sum is 5  (2 and 3)
+        Step 2: Write the factored expression (x+2)(x+3)
+        ` },
+    { question: `Solve the inequality
+        2x - 3 > 5`, answer:`Step 1: Add 3 to both sides 2x - 3 + 3 > 5 + 3 2x > 8
+        Step 2: Divide both sides by 2 x > 4` },
+    { question: 'What is the range of a function?', answer: 'The set of all possible output values for a function.' },
   ];
 
   const handleCardClick = (index) => {
@@ -76,6 +80,8 @@ const Algebra = () => {
                         overflowY: 'auto',
                         flexGrow: 1,
                         display: 'flex',
+                        width: '100%',
+                        py: '40px',
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -102,4 +108,4 @@ const Algebra = () => {
   );
 };
 
-export default Algebra;
+export default FlashcardPage;
