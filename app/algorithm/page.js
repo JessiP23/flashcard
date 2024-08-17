@@ -1,7 +1,6 @@
 'use client';
 import React, { useState } from 'react';
 import { Container, Box, Card, CardContent, Typography, AppBar, Toolbar, Button } from '@mui/material';
-import './flashcard.css';
 import dynamic from 'next/dynamic';
 
 const SignedIn = dynamic(() => import('@clerk/nextjs').then(mod => mod.SignedIn), { ssr: false });
