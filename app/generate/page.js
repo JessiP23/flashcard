@@ -98,9 +98,8 @@ export default function Generate() {
     if (isSignedIn) {
         return (
             <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-                
-                    <AppBar position="sticky" color="transparent" elevation={0}>
-                        <Toolbar>
+                <AppBar position="sticky" color="transparent" elevation={0}>
+                    <Toolbar>
                         <Typography variant="h6" sx={{ flexGrow: 1 }}>
                             Flashcards
                         </Typography>
@@ -113,9 +112,8 @@ export default function Generate() {
                         <SignedOut>
                             <Button color="inherit" href="/sign-in">Login</Button>
                         </SignedOut>
-                        </Toolbar>
-                    </AppBar>
-                
+                    </Toolbar>
+                </AppBar>    
                 <Container maxWidth="md" sx={{ py: 4, flexGrow: 1 }}>
                     <Typography variant="h4" component="h1" gutterBottom sx={{ mb: 4 }}>
                         Generate Flashcards
