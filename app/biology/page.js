@@ -7,20 +7,40 @@ const SignedIn = dynamic(() => import('@clerk/nextjs').then(mod => mod.SignedIn)
 const SignedOut = dynamic(() => import('@clerk/nextjs').then(mod => mod.SignedOut), { ssr: false });
 const UserButton = dynamic(() => import('@clerk/nextjs').then(mod => mod.UserButton), { ssr: false });
 
-const Biology = () => {
+const FlashcardPage = () => {
   const [showBack, setShowBack] = useState({});
 
   const flashcards = [
-    { question: ' What is the term for the pattern of strong and weak beats in music?', answer: 'Rhythm' },
-    { question: 'What is the primary function of a metronome in music?', answer: ' A metronome is a tool that helps musicians keep a steady tempo by producing a click or sound at a specific rate, allowing them to play in time with the desired rhythm.' },
-    { question: 'What is the difference between a major and minor key in music?', answer: 'A major key typically has a bright, happy sound, while a minor key has a more somber, melancholic sound. This is due to the specific pattern of whole and half steps used in each key.' },
-    { question: 'Who is credited with developing the modern system of musical notation?', answer: "Guido d'Arezzo"},
-    { question: 'What is the purpose of a cadence in music?', answer: 'A cadence is a series of chords that conclude a piece of music, providing a sense of finality and resolution. Cadences can be used to signal the end of a section or the entire piece.' },
-    { question: 'What is the role of timbre in music?', answer: 'Timbre refers to the unique "tone color" or sound quality of a particular instrument or voice. Timbre is what allows us to distinguish between different instruments or voices, even when playing the same pitch.' },
-    { question: 'Which musical term means "very fast" or "very quick"?', answer: 'Presto' },
-    { question: 'What is the term for the process of transcribing a piece of music from one instrument or voice to another?', answer: 'Arrangement refers to the process of adapting a piece of music for a different instrument or voice, often involving changes to the melody, harmony, or rhythm.' },
-    { question: 'What is the difference between a sonata and a suite?', answer: 'A sonata is a multi-movement work that typically features a fast-slow-fast structure, while a suite is a collection of dances or movements that are often performed in a specific order.' },
-    { question: 'What is the role of articulation in music?', answer: 'Articulation refers to the way notes are attacked and released, with different articulations (such as legato or staccato) affecting the overall sound and feel of a piece.' },
+    { question: 'What is the basic unit of life? ', answer: 'Cell' },
+    { question: 'What is the process by which cells become specialized to perform specific functions?', answer: 'Differentiation' },
+    { question: 'What is the scientific study of the classification, identification, and naming of organisms?', answer: 'Taxonomy' },
+    { question: 'What is the process by which plants make their own food?', answer: "Photosynthesis"},
+    { question: 'What is the structure and function of the cell membrane?', answer: `The cell membrane, also known as the plasma membrane, is a thin layer of lipid and protein molecules that surrounds every cell. Its structure is semi-permeable, allowing certain substances to pass through while keeping others out. The cell membrane's main functions are to:
+
+Regulate what enters and leaves the cell
+Provide mechanical support and maintain cell shape
+Act as a barrier against external substances
+Aid in cell signaling and communication` },
+    { question: 'What is the difference between mitosis and meiosis, and when do they occur?', answer: 'Mitosis is the process of cell division that results in two daughter cells with the same number of chromosomes as the parent cell. Meiosis, on the other hand, is the process of cell division that occurs in reproductive cells (gametes) and results in four daughter cells with half the number of chromosomes as the parent cell. Mitosis occurs in somatic cells, while meiosis occurs in reproductive cells.' },
+    { question: 'What is the process of gene expression, and how is it regulated?', answer: `Gene expression is the process by which the information encoded in a gene's DNA is converted into a functional product, such as a protein. This process involves transcription (creating a messenger RNA copy of the DNA) and translation (building a protein from the RNA sequence). Gene expression is regulated through various mechanisms, including:
+
+Transcriptional regulation (controlling gene transcription)
+Post-transcriptional regulation (controlling RNA processing and translation)
+Epigenetic regulation (influencing gene expression without altering the DNA sequence)` },
+    { question: ` What is the process of fermentation, and what are its applications? `, answer: `Fermentation is a metabolic process in which microorganisms, such as yeast or bacteria, convert organic compounds into energy in the absence of oxygen. This process has various applications, including:
+
+Food production (e.g., bread, beer, yogurt)
+Biofuel production
+Pharmaceutical production
+Waste management
+        ` },
+    { question: `What is the concept of biodiversity, and why is it important?`, answer:`Biodiversity refers to the variety of different species of plants, animals, and microorganisms that live in an ecosystem or on Earth as a whole. It is important because it:
+
+Maintains ecosystem services, such as pollination and pest control
+Provides a source of new medicines and other valuable resources
+Supports food security and sustainable agriculture
+Enhances ecosystem resilience to environmental changes` },
+    { question: 'What is the scientific study of the behavior of organisms?', answer: 'Ethology' },
   ];
 
   const handleCardClick = (index) => {
@@ -79,20 +99,32 @@ const Biology = () => {
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
+                        padding: '20px',
+                        width: '100%',
+                        height: '100%', 
+                        boxSizing: 'border-box', 
                         backgroundColor: '#ddd',
-                        variant: 'body1'
+                        wordBreak: 'break-word', 
+                        '&::-webkit-scrollbar': {
+                            width: '6px',
+                        },
+                        '&::-webkit-scrollbar-thumb': {
+                            backgroundColor: '#888',
+                            borderRadius: '10px',
+                        },
                         }}
                     >
-                        {showBack[index] ? (
-                        <>
-                            <Typography py={6} variant="h6" sx={{ textAlign:'center' }}>{card.answer}</Typography>
-                        </>
-                        ) : (
-                        <>
-                            
-                            <Typography variant="h6" sx={{ textAlign:'center' }}>{card.question}</Typography>
-                        </>
-                        )}
+                        <Typography
+                        variant="h6"
+                        sx={{
+                            textAlign: 'center',
+                            overflowY: 'auto',
+                            maxHeight: '100%', 
+                            paddingRight: '10px', 
+                        }}
+                        >
+                        {showBack[index] ? card.answer : card.question}
+                        </Typography>
                     </CardContent>
                 </Card>
           ))}
@@ -102,4 +134,4 @@ const Biology = () => {
   );
 };
 
-export default Biology;
+export default FlashcardPage;
