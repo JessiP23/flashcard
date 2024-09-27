@@ -225,7 +225,7 @@ export default function Generate() {
 
     return (
         <main className="flex items-center justify-center min-h-screen bg-gray-800">
-            <div className="text-center p-6 bg-white shadow-md rounded-lg">
+            <div className="text-center p-6 shadow-md rounded-lg">
                 <h1 className="text-2xl font-bold mb-4 text-cyan-800">You are not logged in</h1>
                 <p className="text-lg mb-6 text-cyan-700">Please log in to access this page.</p>
                 <Link href="/">
