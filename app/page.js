@@ -31,7 +31,7 @@ const theme = createTheme({
       main: '#1976d2',
     },
     secondary: {
-      main: '#ffffff',
+      main: '#000000',
     },
   },
   typography: {
