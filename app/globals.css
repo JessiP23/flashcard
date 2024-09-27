@@ -10,9 +10,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: 255, 255, 255; /* White text */
+    --background-start-rgb: 20, 20, 20; /* Dark gray background */
+    --background-end-rgb: 20, 20, 20;
   }
 }
 
@@ -28,8 +28,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: rgb(17, 16, 74)
-    rgb(var(--background-start-rgb));
+  background: rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
